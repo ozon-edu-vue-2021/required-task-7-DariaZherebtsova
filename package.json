@@ -1,0 +1,27 @@
+{
+  "name": "required-task-7-dariazherebtsova",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozon-edu-vue-2021/required-task-7-DariaZherebtsova.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozon-edu-vue-2021/required-task-7-DariaZherebtsova/issues"
+  },
+  "homepage": "https://github.com/ozon-edu-vue-2021/required-task-7-DariaZherebtsova#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "reset.css": "^2.0.2"
+  }
+}
