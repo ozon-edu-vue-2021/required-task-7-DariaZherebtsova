@@ -5,7 +5,7 @@
   "main": "script.js",
   "homepage": "https://DariaZherebtsova.github.io/required-task-7-DariaZherebtsova",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel index.html",
     "clear:build": "rimraf build",
     "build": "parcel build index.html --out-dir build --public-url ./ --no-minify",
     "deploy": "gh-pages -d build"
@@ -26,7 +26,6 @@
     "postcss": "^8.4.4"
   },
   "dependencies": {
-    "reset-css": "^5.0.1",
     "reset.css": "^2.0.2"
   }
 }
