@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
+  "homepage": "https://DariaZherebtsova.github.io/required-task-7-DariaZherebtsova",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clear:build": "rimraf build",
+    "build": "parcel build index.html --out-dir build --public-url ./ --no-minify",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,14 @@
   "bugs": {
     "url": "https://github.com/ozon-edu-vue-2021/required-task-7-DariaZherebtsova/issues"
   },
-  "homepage": "https://github.com/ozon-edu-vue-2021/required-task-7-DariaZherebtsova#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "cssnano": "^5.0.12",
+    "gh-pages": "^3.2.3",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.4"
   },
   "dependencies": {
+    "reset-css": "^5.0.1",
     "reset.css": "^2.0.2"
   }
 }

@@ -2,17 +2,15 @@ import data from './data.json';
 
 document.addEventListener("DOMContentLoaded", function(event) {
   const ulEl = document.querySelector('.contacts-list');
-  console.log('--ul', ulEl);
   for (let i = 0; i < data.length; i++) {
     ulEl.insertAdjacentHTML('beforeend', `<li class="list-item" data-id="${data[i].id}">${data[i].name}</li>`);
   }
 
-  ulEl.addEventListener('click', onClick);
+  ulEl.addEventListener('click', onListClick);
 
   let currentListItem = null;
 
-  function onClick(event) {
-    console.log('--onClick', event.currentTarget);
+  function onListClick(event) {
     if (event.target.classList.contains('list-item')) {
       currentListItem = event.target;
       currentListItem.classList.add('active');
@@ -52,41 +50,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   })
 
-  console.log('--friendsMap', friendsMap);
-  console.log('--popularity', popularity);
-  console.log('--first', first.id);
-  console.log('--second', second.id);
-  console.log('--third', third.id);
-
   document.querySelector('.details-view__back').addEventListener('click', onClickBack);
 
   function onClickBack() {
-    console.log('---onClickBack');
     currentListItem.classList.remove('active');
     document.querySelector('#container').classList.remove('details');
   }
-
 
   function randomInteger(min, max) {
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
   }
-  
 
   function showDetails(id) {
-    console.log('--showDetails', id);
-
     let arrNotFriends = [];
+
     while( arrNotFriends.length < 3) {
       const randomFriend = randomInteger(1, data.length);
       if (!friendsMap[id].friends.includes(randomFriend)
         && !arrNotFriends.includes(randomFriend)
-        && randomFriend != id) {
-        console.log('--randomFriend', randomFriend);  
+        && randomFriend != id) { 
         arrNotFriends.push(randomFriend);
       }
     }
-    console.log('--arrNotFriends', arrNotFriends);
 
     const ulEl = document.querySelector('.details-view__list');
     ulEl.textContent = '';

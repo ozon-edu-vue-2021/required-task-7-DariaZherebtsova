@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages 
+
+on:
+  push:
+    branches: task-7
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # копирует наш проект, как в докере 
+      # uses - когда используем чужие скрипты
+      - uses: actions/checkout@v2
+      # еще нам нужна нода 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - run: npm install
+      - run: npm run build
+
+      # name - выведеться в консоле
+      - name: Deploy with gh-pages
+      - run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
