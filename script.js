@@ -1,20 +1,22 @@
 import data from './data.json';
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const ulEl = document.querySelector('.contacts-list');
+  const contactsListEl = document.querySelector('.contacts-list');
+  contactsListEl.textContent = '';
   for (let i = 0; i < data.length; i++) {
-    ulEl.insertAdjacentHTML('beforeend', `<li class="list-item" data-id="${data[i].id}">${data[i].name}</li>`);
+    contactsListEl.insertAdjacentHTML('beforeend', `<li class="list-item" data-id="${data[i].id}">${data[i].name}</li>`);
   }
 
-  ulEl.addEventListener('click', onListClick);
+  contactsListEl.addEventListener('click', onListClick);
 
   let currentListItem = null;
+  let containerEl = document.querySelector('#container');
 
   function onListClick(event) {
     if (event.target.classList.contains('list-item')) {
       currentListItem = event.target;
       currentListItem.classList.add('active');
-      document.querySelector('#container').classList.add('details');
+      containerEl.classList.add('details');
       showDetails(event.target.dataset.id);
     }
   };
@@ -54,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function onClickBack() {
     currentListItem.classList.remove('active');
-    document.querySelector('#container').classList.remove('details');
+    containerEl.classList.remove('details');
   }
 
   function randomInteger(min, max) {
@@ -74,19 +76,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
 
-    const ulEl = document.querySelector('.details-view__list');
-    ulEl.textContent = '';
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Друзья</li>');
+    const detailsListEl = document.querySelector('.details-view__list');
+    detailsListEl.textContent = '';
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Друзья</li>');
     friendsMap[id].friends.forEach(item => {
-      ulEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item].name}</span></li>`);
+      detailsListEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item].name}</span></li>`);
     });
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Не в друзьях</li>');
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Не в друзьях</li>');
     arrNotFriends.forEach(item => {
-      ulEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item].name}</span></li>`);
+      detailsListEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item].name}</span></li>`);
     });
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Популярные люди</li>');
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Популярные люди</li>');
     [first, second, third].forEach(item => {
-      ulEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item.id].name}</span></li>`);
+      detailsListEl.insertAdjacentHTML('beforeend', `<li><i class="fa fa-male"></i><span>${friendsMap[item.id].name}</span></li>`);
     });
   }
 
