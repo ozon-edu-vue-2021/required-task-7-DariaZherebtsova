@@ -93,21 +93,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
 });
-
-
-
-
-
-
-// function prepareData(data) {
-//   let friendsMap = {};
-//   let popular = {};
-//   data.forEach(item => {
-//     friendsMap[item.id] = {name: item.name, friends: item.friends}
-//     item.friends.forEach(el => {
-//       popular[el] = popular[el] ? popular[el] + 1 : 1;
-//     })
-//   });
-
-//   return
-// }
