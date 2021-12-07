@@ -175,20 +175,22 @@ var _data = _interopRequireDefault(require("./data.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  var ulEl = document.querySelector('.contacts-list');
+  var contactsListEl = document.querySelector('.contacts-list');
+  contactsListEl.textContent = '';
 
   for (var i = 0; i < _data.default.length; i++) {
-    ulEl.insertAdjacentHTML('beforeend', "<li class=\"list-item\" data-id=\"".concat(_data.default[i].id, "\">").concat(_data.default[i].name, "</li>"));
+    contactsListEl.insertAdjacentHTML('beforeend', "<li class=\"list-item\" data-id=\"".concat(_data.default[i].id, "\">").concat(_data.default[i].name, "</li>"));
   }
 
-  ulEl.addEventListener('click', onListClick);
+  contactsListEl.addEventListener('click', onListClick);
   var currentListItem = null;
+  var containerEl = document.querySelector('#container');
 
   function onListClick(event) {
     if (event.target.classList.contains('list-item')) {
       currentListItem = event.target;
       currentListItem.classList.add('active');
-      document.querySelector('#container').classList.add('details');
+      containerEl.classList.add('details');
       showDetails(event.target.dataset.id);
     }
   }
@@ -244,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function onClickBack() {
     currentListItem.classList.remove('active');
-    document.querySelector('#container').classList.remove('details');
+    containerEl.classList.remove('details');
   }
 
   function randomInteger(min, max) {
@@ -263,31 +265,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
 
-    var ulEl = document.querySelector('.details-view__list');
-    ulEl.textContent = '';
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Друзья</li>');
+    var detailsListEl = document.querySelector('.details-view__list');
+    detailsListEl.textContent = '';
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Друзья</li>');
     friendsMap[id].friends.forEach(function (item) {
-      ulEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item].name, "</span></li>"));
+      detailsListEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item].name, "</span></li>"));
     });
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Не в друзьях</li>');
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Не в друзьях</li>');
     arrNotFriends.forEach(function (item) {
-      ulEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item].name, "</span></li>"));
+      detailsListEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item].name, "</span></li>"));
     });
-    ulEl.insertAdjacentHTML('beforeend', '<li class="people-title">Популярные люди</li>');
+    detailsListEl.insertAdjacentHTML('beforeend', '<li class="people-title">Популярные люди</li>');
     [first, second, third].forEach(function (item) {
-      ulEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item.id].name, "</span></li>"));
+      detailsListEl.insertAdjacentHTML('beforeend', "<li><i class=\"fa fa-male\"></i><span>".concat(friendsMap[item.id].name, "</span></li>"));
     });
   }
-}); // function prepareData(data) {
-//   let friendsMap = {};
-//   let popular = {};
-//   data.forEach(item => {
-//     friendsMap[item.id] = {name: item.name, friends: item.friends}
-//     item.friends.forEach(el => {
-//       popular[el] = popular[el] ? popular[el] + 1 : 1;
-//     })
-//   });
-//   return
-// }
+});
 },{"./data.json":"boCh"}]},{},["mpVp"], null)
-//# sourceMappingURL=script.e5eafaf2.js.map
+//# sourceMappingURL=script.9499d0f6.js.map
