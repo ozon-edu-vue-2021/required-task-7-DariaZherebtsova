@@ -1,5 +1,4 @@
 @import "reset.css";
-@import "http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -51,16 +50,16 @@ body {
   background: none;
 }
 
-#container.details .details-view .back {
+#container.details .details-view__back {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
 
-#container.details .details-view .back:hover {
+#container.details .details-view__back:hover {
   cursor: pointer;
 }
 
-#container.details .details-view .background {
+#container.details .details-view__background {
   -webkit-transform: translate3d(0, -40px, 0);
           transform: translate3d(0, -40px, 0);
   -webkit-transition: -webkit-transform 0.25s 0.05s;
@@ -168,6 +167,16 @@ body {
           transform: translate3d(0, 630px, 0);
 }
 
+#container .list-view ul li:nth-child(11) {
+  -webkit-transform: translate3d(0, 700px, 0);
+          transform: translate3d(0, 700px, 0);
+}
+
+#container .list-view ul li:nth-child(12) {
+  -webkit-transform: translate3d(0, 770px, 0);
+          transform: translate3d(0, 770px, 0);
+}
+
 #container .list-view ul li:hover {
   background: #efefef;
   cursor: pointer;
@@ -195,7 +204,7 @@ body {
   background: #FFFFFF;
 }
 
-#container .details-view .background {
+#container .details-view__background {
   position: absolute;
   top: 0;
   height: 110px;
@@ -207,7 +216,7 @@ body {
   transition: transform 0.25s, -webkit-transform 0.25s;
 }
 
-#container .details-view .back {
+#container .details-view__back {
   position: absolute;
   top: 20px;
   left: 5px;
