@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
-  "homepage": "https://DariaZherebtsova.github.io/required-task-7-DariaZherebtsova",
+  "homepage": "https://ozon-edu-vue-2021.github.io/required-task-7-DariaZherebtsova",
   "scripts": {
     "start": "parcel index.html",
     "clear:build": "rimraf build",
